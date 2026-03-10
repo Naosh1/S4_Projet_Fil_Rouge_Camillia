@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-
+/* ── Score ── */
 .scoreRow {
   width: 100%;
   display: flex;
@@ -30,41 +30,40 @@
   font-size: 24px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.6);
-  font-family: 'DM Mono', monospace;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .scoreValue.correct { color: #4ade80; }
-.scoreValue.pct     { color: #fbbf24; }
+.scoreValue.pct     { color: #f5820a; }
 
 .scoreLabel {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-family: 'DM Mono', monospace;
+  font-family: 'Rajdhani', sans-serif;
 }
 
-.best {
-  text-align: right;
-}
+.best { text-align: right; }
 
 .bestLabel {
   display: block;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.35);
-  font-family: 'DM Mono', monospace;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .bestValue {
   font-size: 20px;
   font-weight: 700;
-  color: #c084fc;
-  font-family: 'DM Mono', monospace;
+  color: #1a6fd4;
+  font-family: 'Rajdhani', sans-serif;
 }
 
+/* ── Progress ── */
 .progressBar {
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 2px;
   overflow: hidden;
@@ -72,11 +71,12 @@
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #4ade80, #22d3ee);
+  background: linear-gradient(90deg, #e8320a, #f5820a);
   border-radius: 2px;
   transition: width 0.4s ease;
 }
 
+/* ── Character display ── */
 .charDisplay {
   width: 180px;
   height: 180px;
@@ -84,19 +84,21 @@
   align-items: center;
   justify-content: center;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(245,130,10,0.2);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .charDisplay.charCorrect {
   background: rgba(74, 222, 128, 0.1);
   border-color: rgba(74, 222, 128, 0.4);
+  box-shadow: 0 0 24px rgba(74,222,128,0.2);
 }
 
 .charDisplay.charWrong {
-  background: rgba(248, 113, 113, 0.1);
-  border-color: rgba(248, 113, 113, 0.4);
+  background: rgba(232, 50, 10, 0.1);
+  border-color: rgba(232, 50, 10, 0.4);
+  box-shadow: 0 0 24px rgba(232,50,10,0.2);
 }
 
 .charText {
@@ -106,13 +108,14 @@
   color: #fff;
 }
 
-
+/* ── Feedback ── */
 .feedback {
-  padding: 10px 20px;
+  padding: 10px 24px;
   border-radius: 8px;
   font-size: 15px;
-  font-weight: 600;
-  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.05em;
 }
 
 .feedbackCorrect {
@@ -121,11 +124,11 @@
 }
 
 .feedbackWrong {
-  background: rgba(248, 113, 113, 0.15);
+  background: rgba(232, 50, 10, 0.15);
   color: #f87171;
 }
 
-
+/* ── Form ── */
 .form {
   width: 100%;
   display: flex;
@@ -136,18 +139,20 @@
   flex: 1;
   padding: 14px 18px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(245,130,10,0.2);
+  background: rgba(255, 255, 255, 0.05);
   color: #fff;
   font-size: 16px;
   outline: none;
-  font-family: 'DM Mono', monospace;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
   letter-spacing: 0.05em;
   transition: border-color 0.2s;
 }
 
 .input:focus {
-  border-color: rgba(99, 102, 241, 0.5);
+  border-color: rgba(245,130,10,0.6);
+  box-shadow: 0 0 12px rgba(245,130,10,0.15);
 }
 
 .input:disabled {
@@ -163,38 +168,45 @@
   padding: 14px 24px;
   border-radius: 12px;
   border: none;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #e8320a, #f5820a);
   color: #fff;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  font-family: 'DM Mono', monospace;
-  transition: opacity 0.2s, transform 0.1s;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
   white-space: nowrap;
+  box-shadow: 0 0 16px rgba(232,50,10,0.3);
 }
 
 .submitBtn:hover {
-  opacity: 0.85;
+  opacity: 0.9;
   transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(232,50,10,0.5);
 }
 
 .submitBtn:active {
   transform: translateY(0);
 }
 
+/* ── Reset ── */
 .resetBtn {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(26,111,212,0.3);
   color: rgba(255, 255, 255, 0.4);
   padding: 8px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 13px;
-  font-family: 'DM Mono', monospace;
-  transition: color 0.2s, border-color 0.2s;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .resetBtn:hover {
-  color: rgba(255, 255, 255, 0.8);
-  border-color: rgba(255, 255, 255, 0.3);
+  color: #60a5fa;
+  border-color: rgba(26,111,212,0.6);
+  box-shadow: 0 0 12px rgba(26,111,212,0.2);
 }

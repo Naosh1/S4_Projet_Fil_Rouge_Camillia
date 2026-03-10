@@ -3,85 +3,84 @@
   display: flex;
   flex-direction: column;
   background:
-    radial-gradient(ellipse at 20% 20%, rgba(99,102,241,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.08) 0%, transparent 60%),
-    #0a0a0f;
+          radial-gradient(ellipse at 10% 0%, rgba(232,50,10,0.1) 0%, transparent 50%),
+          radial-gradient(ellipse at 90% 100%, rgba(26,111,212,0.1) 0%, transparent 50%),
+          #0d0d0d;
   color: #fff;
+  font-family: 'Rajdhani', sans-serif;
 }
 
-/* ── Header ── */
 .header {
-  padding: 28px 32px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px 32px;
+  border-bottom: 2px solid rgba(245,130,10,0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
 }
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
 }
 
-.brandKanji {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-
-.brandSub {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.25);
-  font-family: 'DM Mono', monospace;
+.brandLogo {
+  height: 80px;
 }
 
 .modeNav {
   display: flex;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.04);
   padding: 4px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border: 1px solid rgba(245,130,10,0.15);
 }
 
 .modeBtn {
-  padding: 8px 20px;
-  border-radius: 8px;
+  padding: 9px 22px;
+  border-radius: 7px;
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255,255,255,0.4);
   cursor: pointer;
-  font-size: 13px;
-  font-family: 'DM Mono', monospace;
-  transition: background 0.2s, color 0.2s;
+  font-size: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .modeBtnActive {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #e8320a, #f5820a);
   color: #fff;
-  font-weight: 600;
+  box-shadow: 0 0 18px rgba(232,50,10,0.5);
 }
 
-/* ── Script bar ── */
 .scriptBar {
-  padding: 14px 32px;
+  padding: 12px 32px;
   display: flex;
   align-items: center;
   gap: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.2);
 }
 
 .scriptLabel {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.12em;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
 }
 
 .scriptButtons {
@@ -93,56 +92,60 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 16px;
+  padding: 6px 18px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.08);
   background: transparent;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255,255,255,0.4);
   cursor: pointer;
-  font-size: 13px;
-  font-family: 'DM Mono', monospace;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  font-size: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
 }
 
 .scriptBtn:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
 }
 
 .scriptBtnActive {
-  background: rgba(99, 102, 241, 0.15);
-  border-color: rgba(99, 102, 241, 0.5);
-  color: #a5b4fc;
+  background: rgba(26,111,212,0.2);
+  border-color: rgba(26,111,212,0.6);
+  color: #60a5fa;
+  box-shadow: 0 0 14px rgba(26,111,212,0.3);
 }
 
 .scriptEx {
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
 }
 
-/* ── Main ── */
 .main {
   flex: 1;
-  padding: 24px 32px;
-  max-width: 900px;
+  padding: 28px 32px;
+  max-width: 960px;
   width: 100%;
   margin: 0 auto;
   align-self: center;
 }
 
-/* ── Footer ── */
 .footer {
-  padding: 16px 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 14px 32px;
+  border-top: 1px solid rgba(245,130,10,0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+  color: rgba(255,255,255,0.12);
   font-family: 'Noto Sans JP', sans-serif;
+  background: rgba(0,0,0,0.3);
 }
 
 .footerMuted {
-  font-family: 'DM Mono', monospace;
-  color: rgba(255, 255, 255, 0.08);
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255,255,255,0.08);
+  letter-spacing: 0.05em;
 }

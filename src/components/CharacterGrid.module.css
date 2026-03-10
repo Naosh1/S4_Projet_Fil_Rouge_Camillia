@@ -21,14 +21,15 @@
 .dividerLine {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg, transparent, rgba(245,130,10,0.3), transparent);
 }
 
 .dividerLabel {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(245,130,10,0.6);
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
-  font-family: 'DM Mono', monospace;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
 }
