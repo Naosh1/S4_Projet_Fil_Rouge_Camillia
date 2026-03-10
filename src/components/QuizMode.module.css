@@ -74,7 +74,6 @@
   transition: width 0.4s ease;
 }
 
-/* ── Character display ── */
 .charDisplay {
   width: 180px;
   height: 180px;
@@ -125,7 +124,6 @@
   color: #f87171;
 }
 
-/* ── Form ── */
 .form {
   width: 100%;
   display: flex;
