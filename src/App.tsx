@@ -12,9 +12,10 @@ const App = () => {
     return (
         <div className={styles.app}>
             <header className={styles.header}>
-                <div className={styles.brand}>
+                <NavLink to="/study" className={styles.brand}>
                     <img src="/logo.png" alt="R4A10 Logo" className={styles.brandLogo} />
-                </div>
+                </NavLink>
+
                 <nav className={styles.modeNav}>
                     <NavLink
                         to="/study"
@@ -22,7 +23,8 @@ const App = () => {
                             `${styles.modeBtn} ${isActive ? styles.modeBtnActive : ''}`
                         }
                     >
-                        📖 Étude
+                        <span className={styles.modeIcon}>📖</span>
+                        <span>Étude</span>
                     </NavLink>
                     <NavLink
                         to="/quiz"
@@ -30,12 +32,20 @@ const App = () => {
                             `${styles.modeBtn} ${isActive ? styles.modeBtnActive : ''}`
                         }
                     >
-                        ⚡ Quiz
+                        <span className={styles.modeIcon}>⚡</span>
+                        <span>Quiz</span>
+                    </NavLink>
+                    <NavLink
+                        to="/quiz-inverse"
+                        className={({ isActive }) =>
+                            `${styles.modeBtn} ${isActive ? styles.modeBtnActive : ''}`
+                        }
+                    >
+                        <span className={styles.modeIcon}>🔄</span>
+                        <span>Inverse</span>
                     </NavLink>
                 </nav>
-            </header>
 
-            <div className={styles.scriptBar}>
                 <div className={styles.scriptButtons}>
                     {(['hiragana', 'katakana'] as Script[]).map((s) => (
                         <button
@@ -44,17 +54,18 @@ const App = () => {
                             className={`${styles.scriptBtn} ${script === s ? styles.scriptBtnActive : ''}`}
                         >
                             <span className={styles.scriptEx}>{s === 'hiragana' ? 'あ' : 'ア'}</span>
-                            {s.charAt(0).toUpperCase() + s.slice(1)}
+                            <span>{s.charAt(0).toUpperCase() + s.slice(1)}</span>
                         </button>
                     ))}
                 </div>
-            </div>
+            </header>
 
             <main className={styles.main}>
                 <Routes>
                     <Route path="/" element={<StudyMode script={script} />} />
                     <Route path="/study" element={<StudyMode script={script} />} />
-                    <Route path="/quiz" element={<QuizMode key={script} script={script} />} />
+                    <Route path="/quiz" element={<QuizMode key={script} script={script} mode="normal" />} />
+                    <Route path="/quiz-inverse" element={<QuizMode key={`inverse-${script}`} script={script} mode="inverse" />} />
                 </Routes>
             </main>
 

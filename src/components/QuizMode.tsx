@@ -1,14 +1,15 @@
-import { useEffect, useRef, FormEvent } from 'react';
-import useQuiz from '../hooks/useQuiz';
-import useLocalStorage from '../hooks/useLocalStorage';
-import { kanaData } from '../data/kana';
-import styles from './QuizMode.module.css';
+import { useEffect, useRef, FormEvent, useCallback } from 'react'
+import useQuiz from '../hooks/useQuiz'
+import useLocalStorage from '../hooks/useLocalStorage'
+import { kanaData } from '../data/kana'
+import styles from './QuizMode.module.css'
 
 interface QuizModeProps {
-    script: 'hiragana' | 'katakana';
+    script: 'hiragana' | 'katakana'
+    mode: 'normal' | 'inverse'
 }
 
-const QuizMode = ({ script }: QuizModeProps) => {
+const QuizMode = ({ script, mode }: QuizModeProps) => {
     const {
         currentKana,
         userAnswer,
@@ -19,34 +20,74 @@ const QuizMode = ({ script }: QuizModeProps) => {
         submitAnswer,
         nextQuestion,
         resetQuiz,
-    } = useQuiz(kanaData);
+        selectedRows,
+        toggleRow,
+        allRows,
+    } = useQuiz(kanaData, mode)
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    // useRef auto-focus
+    const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
-        inputRef.current?.focus();
-    }, [currentKana]);
+        inputRef.current?.focus()
+    }, [currentKana])
 
-    const [bestScore, setBestScore] = useLocalStorage<number>('kana-best-score', 0);
+    // useLocalStorage meilleur score
+    const [bestScore, setBestScore] = useLocalStorage<number>('kana-best-score', 0)
     useEffect(() => {
         if (score.correct > bestScore) {
-            setBestScore(score.correct);
+            setBestScore(score.correct)
         }
-    }, [score.correct, bestScore, setBestScore]);
+    }, [score.correct, bestScore, setBestScore])
 
-    const pct = score.total > 0 ? Math.round((score.correct / score.total) * 100) : 0;
-    const displayChar = script === 'hiragana' ? currentKana.hiragana : currentKana.katakana;
+    const pct = score.total > 0 ? Math.round((score.correct / score.total) * 100) : 0
 
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
+    // Mode normal : affiche le caractère, on tape le rōmaji
+    // Mode inverse : affiche le rōmaji, on tape le caractère
+    const displayChar = mode === 'normal'
+        ? (script === 'hiragana' ? currentKana.hiragana : currentKana.katakana)
+        : currentKana.romanji
+
+    const correctAnswer = mode === 'normal'
+        ? currentKana.romanji
+        : (script === 'hiragana' ? currentKana.hiragana : currentKana.katakana)
+
+    const placeholder = mode === 'normal' ? 'Rōmaji...' : (script === 'hiragana' ? 'Hiragana...' : 'Katakana...')
+
+    // useCallback sur handleSubmit
+    const handleSubmit = useCallback((e: FormEvent) => {
+        e.preventDefault()
         if (revealed) {
-            nextQuestion();
+            nextQuestion()
         } else {
-            submitAnswer(userAnswer);
+            submitAnswer(userAnswer)
         }
-    };
+    }, [revealed, nextQuestion, submitAnswer, userAnswer])
 
     return (
         <div className={styles.wrapper}>
+
+            {/* Sélection des lignes */}
+            <div className={styles.rowSelector}>
+                <span className={styles.rowSelectorLabel}>Lignes :</span>
+                <div className={styles.rowButtons}>
+                    {allRows.map((row) => (
+                        <button
+                            key={row}
+                            onClick={() => toggleRow(row)}
+                            className={`${styles.rowBtn} ${selectedRows.includes(row) ? styles.rowBtnActive : ''}`}
+                        >
+                            {row}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {/* Mode badge */}
+            <div className={styles.modeBadge}>
+                {mode === 'normal' ? '📖 Caractère → Rōmaji' : '🔄 Rōmaji → Caractère'}
+            </div>
+
+            {/* Score */}
             <div className={styles.scoreRow}>
                 <div className={styles.scoreGroup}>
                     <div className={styles.scoreItem}>
@@ -68,32 +109,37 @@ const QuizMode = ({ script }: QuizModeProps) => {
                 </div>
             </div>
 
+            {/* Progress bar */}
             <div className={styles.progressBar}>
                 <div className={styles.progressFill} style={{ width: `${pct}%` }} />
             </div>
 
+            {/* Character display */}
             <div className={`${styles.charDisplay} ${
                 feedback === 'correct' ? styles.charCorrect
-                    : feedback === 'wrong' ? styles.charWrong
-                        : ''
+                    : feedback === 'wrong' ? styles.charWrong : ''
             }`}>
-                <span className={styles.charText}>{displayChar}</span>
+        <span className={mode === 'inverse' ? styles.charTextRomaji : styles.charText}>
+          {displayChar}
+        </span>
             </div>
 
+            {/* Feedback */}
             {feedback && (
                 <div className={`${styles.feedback} ${
                     feedback === 'correct' ? styles.feedbackCorrect : styles.feedbackWrong
                 }`}>
-                    {feedback === 'correct' ? '✓ Correct !' : `✗ C'était "${currentKana.romanji}"`}
+                    {feedback === 'correct' ? '✓ Correct !' : `✗ C'était "${correctAnswer}"`}
                 </div>
             )}
 
+            {/* Input */}
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     ref={inputRef}
                     value={userAnswer}
                     onChange={(e) => setUserAnswer(e.target.value)}
-                    placeholder={revealed ? 'Appuyez Entrée pour continuer...' : 'Rōmaji...'}
+                    placeholder={revealed ? 'Entrée pour continuer...' : placeholder}
                     disabled={revealed}
                     className={styles.input}
                 />
@@ -106,7 +152,7 @@ const QuizMode = ({ script }: QuizModeProps) => {
                 ↺ Recommencer
             </button>
         </div>
-    );
-};
+    )
+}
 
-export default QuizMode;
+export default QuizMode

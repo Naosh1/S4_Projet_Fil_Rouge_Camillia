@@ -210,3 +210,77 @@
   border-color: rgba(26,111,212,0.6);
   box-shadow: 0 0 12px rgba(26,111,212,0.2);
 }
+
+/* ── Row selector ── */
+.rowSelector {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rowSelectorLabel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+
+.rowButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.rowBtn {
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: rgba(255,255,255,0.3);
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+
+.rowBtn:hover {
+  border-color: rgba(245,130,10,0.3);
+  color: rgba(255,255,255,0.6);
+}
+
+.rowBtnActive {
+  background: rgba(245,130,10,0.15);
+  border-color: rgba(245,130,10,0.5);
+  color: #f5820a;
+}
+
+/* ── Mode badge ── */
+.modeBadge {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+/* ── Inverse display ── */
+.charTextRomaji {
+  font-size: 52px;
+  line-height: 1;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: #f5820a;
+  letter-spacing: 0.05em;
+}
