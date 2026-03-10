@@ -13,4 +13,4 @@ Application web d'apprentissage des hiragana et katakana.
 React · TypeScript · Vite · React Router · CSS Modules
 
 ## Déploiement
-[Vercel](https://vercel.com/naosh1s-projects/s4-projet-fil-rouge-camillia)
+[Vercel](https://s4-projet-fil-rouge-camillia.vercel.app/)
