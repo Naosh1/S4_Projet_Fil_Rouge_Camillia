@@ -7,7 +7,6 @@
   width: 100%;
 }
 
-/* ── Score ── */
 .scoreRow {
   width: 100%;
   display: flex;
@@ -60,7 +59,6 @@
   font-family: 'Rajdhani', sans-serif;
 }
 
-/* ── Progress ── */
 .progressBar {
   width: 100%;
   height: 4px;
@@ -108,7 +106,6 @@
   color: #fff;
 }
 
-/* ── Feedback ── */
 .feedback {
   padding: 10px 24px;
   border-radius: 8px;
@@ -190,7 +187,6 @@
   transform: translateY(0);
 }
 
-/* ── Reset ── */
 .resetBtn {
   background: none;
   border: 1px solid rgba(26,111,212,0.3);
@@ -211,7 +207,6 @@
   box-shadow: 0 0 12px rgba(26,111,212,0.2);
 }
 
-/* ── Row selector ── */
 .rowSelector {
   width: 100%;
   display: flex;
@@ -262,7 +257,6 @@
   color: #f5820a;
 }
 
-/* ── Mode badge ── */
 .modeBadge {
   font-size: 12px;
   color: rgba(255,255,255,0.3);
@@ -275,7 +269,6 @@
   background: rgba(255,255,255,0.03);
 }
 
-/* ── Inverse display ── */
 .charTextRomaji {
   font-size: 52px;
   line-height: 1;
